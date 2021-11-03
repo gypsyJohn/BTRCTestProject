@@ -21,6 +21,7 @@ public class RCTractorControlClass {
     Handler spreadingActivityHandler;
     String esp32DKAddress = "D8:A0:1D:69:E0:2A";
     String wifiLora32Address = "8C:AA:B5:83:A1:3A";
+    String esp32PicoSecondAddress = "D8:A0:1D:69:E7:FA";
     double metresToDegreesFactor = 8.95E-6;
     double latitude = 0, longitude = 0;
     int lengthOfBox = 0, widthOfBox = 0;
@@ -101,8 +102,9 @@ public class RCTractorControlClass {
                 }
             }
         };
-        RcControllerBluetoothClass rcControllerBluetoothClass = new RcControllerBluetoothClass(esp32Handler,wifiLora32Address);
+//        RcControllerBluetoothClass rcControllerBluetoothClass = new RcControllerBluetoothClass(esp32Handler,wifiLora32Address);
         rcTractorBluetoothClass = new RcTractorBluetoothClass(esp32Handler,esp32DKAddress);
+        RcControllerBluetoothClass rcControllerBluetoothClass = new RcControllerBluetoothClass(esp32Handler,esp32PicoSecondAddress);
     }
 
 

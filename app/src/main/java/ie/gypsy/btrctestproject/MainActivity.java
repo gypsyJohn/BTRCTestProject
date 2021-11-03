@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void nextScreen(View view){
-        joystickBT.getExampleConnectedThread().cancel();
+//        joystickBT.getExampleConnectedThread().cancel();
         tractorBT.getExampleConnectedThread().cancel();
         joystickBT = null;
         tractorBT = null;
