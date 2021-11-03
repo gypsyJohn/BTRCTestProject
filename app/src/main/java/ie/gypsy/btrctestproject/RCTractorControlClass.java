@@ -71,7 +71,8 @@ public class RCTractorControlClass {
                             angleCorrection = 180 - angle;
                             lengthOfBox = ultrasonicFrontPosition + 14;//14 = Distance from edge of back wheels to front of tractor body
                             widthOfBox = ultrasonicRightPosition + 8;//8 = Distance from outer rim of back wheel to opposite edge of tractor body
-                            msg1.obj = new int[]{widthOfBox,lengthOfBox};
+                            msg1.obj = new TractorPosnMsg(ultrasonicFrontPosition,ultrasonicLeftPosition,ultrasonicBackPosition,ultrasonicRightPosition,new int[]{widthOfBox, lengthOfBox});
+//                            msg1.obj = new int[]{widthOfBox,lengthOfBox};
                             spreadingActivityHandler.sendMessage(msg1);
                             break;
                         }else{
@@ -94,7 +95,7 @@ public class RCTractorControlClass {
 
                         int[] xyCoords = calculateXYCoordsOfTractor(usVectors);
 
-                        msg1.obj = xyCoords;
+                        msg1.obj = new TractorPosnMsg(ultrasonicFrontPosition,ultrasonicLeftPosition,ultrasonicBackPosition,ultrasonicRightPosition,xyCoords);
                         spreadingActivityHandler.sendMessage(msg1);
                         break;
                 }
@@ -160,6 +161,19 @@ public class RCTractorControlClass {
         return new int[]{tractorPosns.get(0).xPosn, tractorPosns.get(1).yPosn};
         
 
+    }
+
+    class TractorPosnMsg{
+        int front, back, left, right;
+        int[] positions;
+
+        public TractorPosnMsg(int front, int left, int back, int right, int[] positions) {
+            this.front = front;
+            this.back = back;
+            this.left = left;
+            this.right = right;
+            this.positions = positions;
+        }
     }
 
 
