@@ -71,6 +71,9 @@ public class RCTractorControlClass {
                             angleCorrection = 180 - angle;
                             lengthOfBox = ultrasonicFrontPosition + 14;//14 = Distance from edge of back wheels to front of tractor body
                             widthOfBox = ultrasonicRightPosition + 8;//8 = Distance from outer rim of back wheel to opposite edge of tractor body
+                            msg1.obj = new int[]{widthOfBox,lengthOfBox};
+                            spreadingActivityHandler.sendMessage(msg1);
+                            break;
                         }else{
                             angle = (angle + angleCorrection) % 360;
                         }
@@ -83,9 +86,8 @@ public class RCTractorControlClass {
                         usVectors.add(new USVector(ultrasonicBackPosition,(angle + 180)%360,3));
                         usVectors.add(new USVector(ultrasonicLeftPosition,(angle + 270)%360,4));
 
-                        for(USVector usVector : usVectors){
-                            if(usVector.distance < 3){usVectors.remove(usVector);} /// Not sure about this code
-                        }
+                        /// Not sure about this code
+                        usVectors.removeIf(usVector -> usVector.distance < 3);
                         if(usVectors.size() < 3) {
                             break;
                         }
