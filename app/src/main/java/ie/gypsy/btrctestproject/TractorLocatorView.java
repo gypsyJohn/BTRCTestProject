@@ -34,10 +34,10 @@ public class TractorLocatorView extends View {
     }
 
     void drawBoxOutline(Canvas canvas){
-        canvas.drawLine(centreHorizontal - scaledWidthOfBox, centreVertical - scaledLengthOfBox, centreHorizontal - scaledWidthOfBox, centreVertical + scaledLengthOfBox,paint);
-        canvas.drawLine(centreHorizontal + scaledWidthOfBox, centreVertical - scaledLengthOfBox, centreHorizontal + scaledWidthOfBox, centreVertical + scaledLengthOfBox,paint);
-        canvas.drawLine(centreHorizontal - scaledWidthOfBox, centreVertical - scaledLengthOfBox, centreHorizontal + scaledWidthOfBox, centreVertical - scaledLengthOfBox,paint);
-        canvas.drawLine(centreHorizontal - scaledWidthOfBox, centreVertical + scaledLengthOfBox, centreHorizontal + scaledWidthOfBox, centreVertical + scaledLengthOfBox,paint);
+        canvas.drawLine(0, 0, 0, scaledLengthOfBox,paint);
+        canvas.drawLine(scaledWidthOfBox, 0, scaledWidthOfBox, scaledLengthOfBox,paint);
+        canvas.drawLine(0, 0, scaledWidthOfBox, 0,paint);
+        canvas.drawLine(0, scaledLengthOfBox, scaledWidthOfBox, scaledLengthOfBox,paint);
     }
 
     void drawTractorDot(Canvas canvas){
@@ -45,10 +45,12 @@ public class TractorLocatorView extends View {
     }
 
     void drawPositions(Canvas canvas){
-        canvas.drawText("Left = " + usleft,50,100,paint);
-        canvas.drawText("Right = " + usright,50,200,paint);
-        canvas.drawText("Front = " + usfront,50,300,paint);
-        canvas.drawText("Back = " + usback,50,400,paint);
+        canvas.drawText("Left = " + usleft,700,100,paint);
+        canvas.drawText("Right = " + usright,700,200,paint);
+        canvas.drawText("Front = " + usfront,700,300,paint);
+        canvas.drawText("Back = " + usback,700,400,paint);
+        canvas.drawText("Ty = " + tractorX,700,500,paint);
+        canvas.drawText("Tx = " + tractorY,700,600,paint);
     }
 
     @Override

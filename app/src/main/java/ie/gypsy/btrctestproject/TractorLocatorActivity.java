@@ -39,8 +39,7 @@ public class TractorLocatorActivity extends Activity {
             public void handleMessage(@NonNull Message msg) {
                 switch(msg.what){
                     case 2:
-                        int[] tractorPosition = (int[]) msg.obj;
-                        tractorLocatorView.setTractorPosition(tractorPosition);
+                        tractorLocatorView.setTractorPosition( (RCTractorControlClass.TractorPosnMsg) msg.obj);
                         break;
                 }
             }
